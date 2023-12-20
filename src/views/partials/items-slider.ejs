@@ -1,0 +1,18 @@
+<li class="slider__item glide--slide">
+    <article class="card-item">
+        <a class="card-item__link" href=" item.id %>"></a>
+        <picture class="card-item__cover">
+            <span class="card-item__tag">Nuevo</span>
+            <img class="card-item__link--front" src="<%= item.imagen %>"
+                alt="<%= item.nombre %>">
+            <img class="card-item__link--back" src="<%= item.imagen.replace(/-\d+\.webp$/, '-box.webp') %>">
+
+        </picture>
+        <div class="card-item__content">
+            <p class="card-item__license"><%= item.categoria %></p>
+            <h4 class="card-item__name"><%= item.nombre %></h4>
+            <p class="card-item__price">$<%= item.precio.toFixed(2) %></p>
+            <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
+        </div>
+    </article>
+</li>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Css/index.css">
+    <link rel="icon" href="/img/icons/favicon.ico" type="image/x-icon">
+    <title>EDIT</title>
+
+
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <!--fin header-->
+
+
+
+        <h1 class="edit-titulo">EDITAR ITEM</h1>
+        <main class="container">
+            <form id="figura-form" method="post" action="./">
+                
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="id" value="<%= producto.id %>">
+            
+                <div class="categoriaLicencia">
+
+                    <label for="categoria">Categoría:</label>
+                    <select name="categoria" id="categoria">
+                        <% categorias.forEach(categoria=> {%>
+                            <option value="<%= categoria %>">
+                                <%= categoria %>
+                            </option>
+                            <% }); %>
+
+                    </select>
+
+                   
+                </div>
+                <div class="edit-productos">
+                    <label for="nombre">Nombre del producto:</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="<%= producto.nombre %>">
+
+                </div>
+
+                <div class="descripcionEdit">
+                    <textarea id="descripcion" name="descripcion" rows="4" cols="70"
+                        placeholder="Figura Funko coleccionable de Kakashi Hatake de la saga Naruto Shipudden invocando chidori."></textarea>
+                </div>
+                <div class="descuentosEdit">
+                   
+                    <div class="precio">
+                        <label for="precio">Precio:</label>
+                        <input type="number" id="precio" name="precio" step="0.01" required placeholder="$ <%= producto.precio %>">
+                    </div>
+                   
+                </div>
+               
+                <label for="imagenes">Imágen:</label>
+                <input type="file" id="imagenes" name="imagen" accept="image/*">
+
+                <div class="ModificarProductoEdit">
+                    <input type="submit" value="Modificar Producto" class="modificarProducto">
+                </div>
+            </form>
+
+
+        </main>
+        <!--footer-->
+
+        <%- include('../partials/footer.ejs') %>
+
+            <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Css/index.css">
+    <link rel="icon" href="/img/icons/favicon.ico" type="image/x-icon">
+    <title>ADMIN</title>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+        <!--fin header-->
+
+        <div class="container">
+            <form id="search-form">
+
+                <img class="lupa-productos" src="/img/icons/search_icon.svg" alt="Ícono de lupa" />
+                <input class="placeholder-productos" id="search-input" placeholder="Código, nombre o categoría" />
+
+            </form>
+            <section>
+                <div class="listadoAdmin">
+                    <h1 class="tituloAdmin">LISTADO DE PRODUCTOS</h1>
+                    <div class="agregarAdmin">
+                        <h2>AGREGAR</h2>
+                        <a href="/admin/create">
+                            <button>
+                                <img src="/img/icons/Vector.svg" alt="boton plus">
+                            </button>
+                        </a>
+                    </div>
+
+
+                </div>
+
+                <div class="tabla-productos">
+                    <table class="wrapperProduct">
+                        <thead>
+                            <div class="titulos-productos">
+                                <tr>
+                                    <th class="id">ID</th>
+                                    <th class="codigo">Código</th>
+                                    <th class="product">Nombre del Producto</th>
+                                    <th class="categoria">Categoría</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </div>
+                        </thead>
+                        <tbody>
+                            <% productos.forEach(product=> { %>
+                                <tr>
+                                    <td>
+                                        <%= product.id %>
+                                    </td>
+                                    <td>
+                                        <%= 'STW' + product.id.toString().padStart(6, '0' ) %>
+                                    </td>
+                                    <td>
+                                        <%= product.nombre %>
+                                    </td>
+                                    <td>
+                                        <%= product.categoria %>
+                                    </td>
+                                    <td><a href="admin/edit/<%= product.id %>"><button><img src="/img/icons/edit_pencil.svg"
+                                                    alt="Editar Producto"></button></a></td>
+                                    <td><a href="admin/delete/<%= product.id %>"><button><img
+                                                    src="/img/icons/delete_trash.svg"
+                                                    alt="Eliminar Producto"></button></a></td>
+                                </tr>
+                                <% }); %>
+            </section>
+            </tbody>
+            </table>
+
+        </div>
+        </div>
+
+        <!--aca empieza el footer-->
+        <%- include('../partials/footer.ejs') %>
+            <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+            <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</body>
+
+</html>
